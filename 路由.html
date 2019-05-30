@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<template id="index">
+			<div>
+				<h1>哈</h1>
+			</div>
+		</template>
+		<template id="find">
+			<div>
+				<h1>阿大声道</h1>
+			</div>
+		</template>
+		<div id="app">
+			<div>
+				<router-link to="/index">主页</router-link>
+				<router-link to="/find">发现</router-link>
+			</div>
+			<router-view></router-view>
+		</div>
+		<script src="js/vue.js"></script>
+		<script src="js/vue-router.js"></script>
+		<script>
+			const index ={
+				template:'#index'
+			}
+			const find ={
+				template:'#find'
+			}
+			let abc = new VueRouter({
+				routes:[
+					{
+						path:'/index',
+						component:index
+					},
+					{
+						path:'/find',
+						component:find
+					}
+				]
+			})
+			let app =new Vue({
+				el:'#app',
+				components:{
+					index,
+					find
+				},
+				router:abc
+			})
+		</script>
+	</body>
+</html>
