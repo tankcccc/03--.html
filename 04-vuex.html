@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<template id="addcounter">
+			<div>
+				<p>我是addcounter子组件</p>
+				<p>当前的counter的值:{{this.$store.state.counter}}</p>
+				<button @click="adone">加1</button>
+			</div>
+		</template>
+		<template id="subcounter">
+			<div>
+				<p>我是subcounter子组件</p>
+				<p>当前的counter的值:{{this.$store.state.counter}}</p>
+				<button @click="subone">减1</button>
+			</div>
+		</template>
+		<div id="app">
+			<p>我是Vue实列，当前的counter是{{this.$store.state.counter}}</p>
+			<hr />
+			<add-counter></add-counter>
+			<hr />
+			<sub-counter></sub-counter>
+		</div>
+		<script src="js/vue.js"></script>
+		<script src="vuex@2.3.1.js"></script>
+		<script>
+			const AddCounter ={
+				template:'#addcounter',
+				methods:{
+					addone:function(){
+						console.log('addone')
+						this.$store.commit('add')
+					}
+				}
+			}
+			const SubCounter ={
+				template:'#subcounter',
+				methods:{
+					subone:function(){
+						console.log('subone')
+						this.$store.commit('sub')
+					}
+				}
+			}
+			let store = new Vuex.Store({
+				state:{counter:10},
+				mutations:{
+					add:function(state){
+						state.counter++
+					},
+					sub:function(state){
+						state:counter--
+					}
+				}
+			})
+			let app = new Vue({
+				el:'#app',
+				data:{},
+				store,
+				components:{
+					AddCounter,
+					SubCounter
+				}
+				
+			})
+		</script>
+	</body>
+</html>
