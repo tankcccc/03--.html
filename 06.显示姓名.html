@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        我的姓名是---{{fullName}}
+    </div>
+    <script src="./js/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                firstName :'zhang',
+                lastName:'Sanfang'
+            },
+            computed:{
+                fullName:{
+                    get:function(){
+                    return  this.firstName + '' +this.lastName;
+                    },
+                    set:function(newValue){
+                            var names=newValue.split(',') //分割为数组
+                            this.firstName=names[0]
+                            this.lastName=names[1]
+                    }
+                }
+                //计算属性的默认用法是getters函数
+              
+            }
+        })
+    </script>
+</body>
+</html>
