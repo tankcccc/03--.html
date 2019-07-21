@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .btnBackground{
+            background:red;
+        }
+    </style>
+    <div id="app">
+        <input type="button" value="点我一下" :class='{btnBackground:isBack}' v-on:click='changeColor'>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        let app =new Vue({
+            el:"#app",
+            data:{
+                isBack:true
+            },
+            methods:{
+                changeColor:function(){
+                    this.isBack=!this.isBack
+                }
+            }
+           
+        })
+    </script>
+</body>
+</html>

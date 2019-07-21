@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .divStyle{
+        width: 100px;
+        height: 100px;
+        background: red;
+    }
+    .btnBackground{
+        background:darkred;
+    }
+</style>
+<body>
+    <div id="app">
+        绑定的class元素
+        <div :class = "{divStyle:isActive}"></div>"
+        <input type="button" value="点击我切换" :class="{btnBackground:isBack}" v-on:click="changeColor">
+    </div>
+    <script src="./js/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                isActive:true,
+                isBack:true,
+            },
+            methods:{
+                changeColor:function(){
+                    this.isBack= !this.isBack
+                }
+            }
+        })
+    </script>
+</body>
+</html>
