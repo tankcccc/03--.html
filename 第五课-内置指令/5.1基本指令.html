@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p v-if="6>3">{{apple}}</p>
+        <p v-else-if="9>5">{{banana}}</p>
+        <p v-else="8<4">{{pineapple}}</p>
+
+    
+        <div v-if="type==='name'">
+            用户名 ：<input type="text" placeholder="请输入用户名" >
+        </div>
+        <div v-else>
+            密码 ：<input type="text" placeholder="请输入密码" key="psd">
+        </div>
+        <button v-on:click="toggleType">点我切换</button>
+    </div>
+   
+   
+    <script src="../js/vue.js"></script>
+    <script>
+        var app=new Vue({
+            el:"#app",
+            data:{
+                apple:'apple',
+                banana:'banana',
+                pineapple:'pineapple',
+                type:'name'
+            },
+            methods:{
+            toggleType:function () {
+                //三目运算符
+                this.type = (this.type==='name'?'password' : 'name')
+                }
+            }
+        })
+    </script>
+</body>
+</html>
