@@ -10,22 +10,36 @@
     <div id="app">
         <div v-for='study in arr'>{{study}}</div>
         <button @click="sortArr">排序</button>
+        <button @click='changeOne'>改变数组的指定向</button>
     </div>
+    返回字符串中含有oo的项：
+    {{ matchOO }}
     <script src="../js/vue.js"></script>
     <script>
         var app=new Vue({
             el:'#app',
             data:{
-                arr:['asd','asdasdasd','a']
+                arr:['book','asdasdasd','a']
+            },
+            computed:{
+                matchOO:function(){
+                    return this.arr.filter(function(book){
+                        return book.match(/oo/)
+                    })
+                }
             },
             methods:{
                 sortArr:function(){
                     this.arr.sort((a,b)=>{
                         return a.length-b.length
                     })
+                },
+                changeOne:function(){
+                    this.arr[0]='car'
                 }
             }
         })
+        
     </script>
 </body>
 </html>

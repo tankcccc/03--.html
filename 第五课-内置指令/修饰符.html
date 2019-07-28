@@ -7,15 +7,20 @@
     <title>Document</title>
 </head>
 <body>
-    <style>
-      
-    </style>
-   
+    <div id="app">
+       <div @click=""></div>
+    </div>
     <script src="../js/vue.js"></script>
     <script>
-        let app =new Vue({
-           el:
-        })
+           var app =new Vue({
+               el:'#app',
+               methods:{
+                   btnclick:function(){
+                      alert  
+                   }
+               }
+           })
+        
     </script>
 </body>
 </html>
