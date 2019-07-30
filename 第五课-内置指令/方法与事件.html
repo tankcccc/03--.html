@@ -7,24 +7,28 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="app">
-        点击次数{{count}}
-        <button @click='handle()'>点击我每次加1</button>
-        <button @click='handle(8)'>点击我每次加8</button>
-    </div>
+       
+            <div id="app">
+                    点击次数：  {{count}}
+                
+                <button @click="handle()">点击我每次加1</button>
+                <button @click="handle(8)">点击我每次加8</button>
+            </div>
     <script src="../js/vue.js"></script>
     <script src="">
+         Debugger;
         var app=new Vue({
-            el:'#app',
-            data:{
-                count:0
-            },
-            computed:{
-                handle:function(count){
-                    count=count||1
-                    this.count+=count
-                }
+           el:'#app',
+           data:{
+            count: 0
+        },
+        methods:{
+            handle:function (count) {
+                // console.log(count)  [object MouseEvent]
+                count = count || 1;
+                this.count += count;
             }
+        }
         })
     </script>
 </body>

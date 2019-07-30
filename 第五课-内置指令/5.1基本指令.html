@@ -8,18 +8,13 @@
 </head>
 <body>
     <div id="app">
-        <p v-if="6>3">{{apple}}</p>
-        <p v-else-if="9>5">{{banana}}</p>
-        <p v-else="8<4">{{pineapple}}</p>
-
-    
-        <div v-if="type==='name'">
-            用户名 ：<input type="text" placeholder="请输入用户名" >
+        <div v-if='type===name'>
+            用户名 ：<input type="text" key='name'>
         </div>
         <div v-else>
-            密码 ：<input type="text" placeholder="请输入密码" key="psd">
+            密码：<input type="text" key='psd'>
         </div>
-        <button v-on:click="toggleType">点我切换</button>
+        <button v-on:@click='toggleType'>点我切换</button>
     </div>
    
    
@@ -28,15 +23,11 @@
         var app=new Vue({
             el:"#app",
             data:{
-                apple:'apple',
-                banana:'banana',
-                pineapple:'pineapple',
-                type:'name'
+              type:'name' 
             },
             methods:{
-            toggleType:function () {
-                //三目运算符
-                this.type = (this.type==='name'?'password' : 'name')
+                toggleType:function(){
+                    this.type=(this.type==='name' ? 'password':'name')
                 }
             }
         })

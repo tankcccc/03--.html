@@ -1,0 +1,108 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app" style="margin-bottom: 300px">
+    v-model的用法： <br>
+    <hr>
+    input和textarea的用法：
+    <input type="text" v-model="value"> <br>
+    {{value}}
+    <br>
+    <textarea name="" id="" cols="30" rows="2" v-model="msg">我是多行文本的初始化值</textarea>
+    <br>{{msg}}
+    <hr>
+    单选框： <br>
+    单个单选框---用v-bind： <input type="radio"  v-bind:checked="oneradio"> <br>
+    ---此处用v-model不生效
+    单个单选框---用v-model： <input type="radio"  v-model="oneradio"> <br>
+    多个单选框：
+    -------------------
+     猫蛋：<input type="radio" name="checks" value="猫蛋" v-model="checkname"> <br>
+     狗蛋：<input type="radio" name="checks" value="狗蛋" v-model="checkname"> <br>
+     翠花：<input type="radio" name="checks" value="翠花" v-model="checkname"> <br>
+    现在选中的是：------{{checkname}}
+    <hr>
+    复选框：
+    单个复选框---用v-bind：<input type="checkbox" v-bind:checked="oneradio">
+    单个复选框---用v-model：<input type="checkbox" v-model="oneradio">
+    <br>-------------<br>
+    多个复选框：
+    猫蛋： <input type="checkbox" value="猫蛋" v-model="checks">
+    狗蛋： <input type="checkbox" value="狗蛋" v-model="checks">
+    翠花： <input type="checkbox" value="翠花" v-model="checks">
+    <br>现在选中了{{checks}}
+    <br>-------------<br>
+    单选的下拉框：
+    <select v-model="selected">
+        <option value="猫蛋">猫蛋</option>
+        <option value="狗蛋">狗蛋</option>
+        <option value="翠花">翠花</option>
+    </select>----------现在选中的是 {{selected}} <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    多选的下拉框：
+    <select v-model="selectedmul" multiple>
+        <option value="猫蛋">猫蛋</option>
+        <option value="狗蛋">狗蛋</option>
+        <option value="翠花">翠花</option>
+    </select>----------现在选中的是 {{selectedmul}}
+    <hr style="color: darkred">
+    绑定值： <br>
+    单选按钮：
+    <input type="radio" v-model="picked" v-bind:value="value"> ----{{picked}}
+    <br>-------------<br>
+    复选框：---选中和不选中的vlaue不一样
+    <input type="checkbox" v-model="toggle"  :true-value="value1" :false-value="value2">
+    <br>
+    {{toggle}} <br>
+    被选中：  {{toggle == value1 }} <br>
+    =未被选中：{{toggle == value2 }} <br>
+    <br>-------------<br>
+    下拉框：
+    <select v-model="valueselect">
+        <option  :value="{num:111}">猫蛋</option>
+    </select>----------现在选中的是 {{typeof valueselect}}  ----{{valueselect.num}}
+    <br>-------------<br>
+    修饰符：
+    lazy：
+    <input type="text" v-model="inputStr">------{{inputStr}} <br>
+    <input type="text" v-model.lazy="lasyStr">------{{lasyStr}} <br> <br>
+    number:
+    <input type="text" v-model.number="isNum"> <br>
+    {{typeof isNum}} <br>
+    trim:
+    <input type="text" v-model.trim="trimStr"> <br>{{trimStr.split('').length}}
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script>
+    var app= new Vue({
+        el:'#app',
+        data: {
+            value: '',
+            msg: '',
+            oneradio: true,
+            checkname:'',
+            checks:[],
+            selected:[],
+            selectedmul:'',
+            picked:true,
+            value:'111',
+            toggle:true,
+            value1:'我被选中了',
+            value2:'我没有被选中',
+            valueselect: '',
+            inputStr:'',
+            lasyStr:'',
+            isNum:'',
+            trimStr:''
+        }
+    })
+</script>
+</body>
+</html>
