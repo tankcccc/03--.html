@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+    </style>
+    <div id="app">
+        <input type="text" v-model="value"><br>
+        {{value}}
+        <textarea name="" id="" cols="30" rows="2" v-model="msg"></textarea>
+        <hr>
+        猫蛋：<input type="radio" value="猫蛋" v-model="checkname" name="checks"><br>
+        狗蛋：<input type="radio" value="狗蛋" v-model="checkname" name="checks"><br>
+        翠花：<input type="radio" value="翠花" v-model="checkname" name="checks"><br>
+        现在选中的是：------{{checkname}}
+        <hr>
+        <select v-model="selected">
+            <option value="猫蛋">猫蛋</option>
+            <option value="狗蛋">狗蛋</option>
+            <option value="翠花">翠花</option>
+        </select>
+        ----------现在选中的是 {{selected}}<hr>
+        <!-- <input type="checkbox" v-model="toggle"  :true-value="value1" :false-value="value2"> -->
+        <input type="checkbox" v-model="toggle"  :true-value='value1'  :false-value='value2'>
+        {{toggle}}<br>
+        {{toggle==value1}}<br>
+        {{toggle==value2}}
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        let app =new Vue({
+            el:"#app",
+            data:{
+               value:'back',
+               msg:'',
+               checkname:'',
+               selected:'[]',
+               value1:'我被选中',
+               value2:'我没有被选中',
+               toggle: true
+            },
+        })
+    </script>
+</body>
+</html>
