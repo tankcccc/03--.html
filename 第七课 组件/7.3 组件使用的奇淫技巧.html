@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app" style="border: 1px solid red">
+       <app-components></app-components>
+       <btn-components>{{count}}</btn-components>
+       <btn-components>{{count}}</btn-components>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        var app=new Vue({
+            el:'#app',
+            data:{
+                count:1
+            },
+            components:{
+                'app-components':{
+                    template:'<div><span>我是app局部注册的一个组件</span></div>'
+                },
+                'btn-components':{
+                    template:'<button @click="count++" >{{count}}</buttom>',
+                    data:function(){
+                        return count++
+                    }
+                }
+            },
+            methods:{
+                plus:function(){
+                    this.count++
+                }
+            }
+        })
+    </script>
+</body>
+</html>

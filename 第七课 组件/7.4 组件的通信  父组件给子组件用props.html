@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app" style="height: 360px;border:1px solid red">
+        <child-components msg="[3,5,6]"></child-components>
+
+
+
+        <hr>使用v-bind进行数据的动态绑定---吧input中的msg传递给子组件
+        <input type="text" v-model="parentmsg">
+        <bind-components  :msg="parentmsg"></bind-components>
+
+
+
+
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                parentmsg:'今天的月亮真圆'
+            },
+            components:{
+                'child-components':{
+                    props:['msg'],
+                    template:'<div style="border : 2px solid red;height: 20px;">{{msg.length}}</div>'
+                },
+                'bind-components':{
+                    props:['msg'],
+                    template:'<div style="border : 2px solid red;height: 20px;">{{msg}}</div>'
+                }
+            }
+        })
+    </script>
+    
+</body>
+</html>
