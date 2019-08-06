@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+       <my-component my-msg="lalala"></my-component>
+       <hr>
+       <input type="text" v-model="d">
+       <!-- <type-component :a="a" :b="b" :c="c" :d="d" ></type-component> -->
+       <type-component :a="a" :b="b" :c="c" :d="d"  :f="f" :g="g"></type-component>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        Vue.component('my-component',{
+            props:['myMsg'],
+            template:'<div>{{abc}}</div>',
+            data:function(){
+                return {
+                    abc:this.myMsg
+                }
+            }
+        })
+        Vue.component('type-component',{
+            props:{
+                a:String,
+                b:[String,Number],
+                c:{
+                    type:Boolean,
+                    default:true
+                },
+                d:{
+                    type:Number,
+                    required:true
+                },
+                e:{
+                    type:Array,
+                    dafault:function(){
+                        return [666]
+                    }
+                },
+                f:{
+                    validator:function(value){
+                        return value<10
+                    }
+                },
+                g:{
+                    type:Function
+                 }
+            },
+            template:'<div>{{a}}--{{b}}--{{c}}--{{d}}--{{e[0]}} </div>',
+           
+        })
+        var app =new Vue({
+            el:'#app',
+            data:{
+                a:'1',
+                b:'666',
+                c:true,
+                d: 32423,
+                e: [],
+                f:4,
+                g:console.log()
+               
+            },
+            component:{
+
+            }
+        })
+    </script>
+</body>
+</html>
