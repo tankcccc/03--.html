@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <my-acomponent></my-acomponent>
+        <my-bcomponent></my-bcomponent>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        Vue.component('my-acomponent',{
+            template:'<div><button @click="handle">点击我向B组件传递数据</button></div>',
+            data:function(){
+                return{
+                    aaa:'我是来自A组件的内容'
+                }
+            },
+            methods:{
+                handle:function(){
+                    this.$root.bus.$emit('lalala',this.aaa)
+                }
+            }
+        })
+        Vue.component('my-bcomponent',{
+            template:'<div>我是一个组件</div>',
+            created:function(){
+                //A组件在实列创建的时候就监听事件
+                this.$root.bus.$on('lalala',function(value){
+                    alert(value)
+                })
+            }
+        })
+        var app =new Vue({
+            el:'#app',
+            data:{
+                //bus中介
+                bus:new Vue()
+            },
+
+        })
+    </script>
+</body>
+</html>
