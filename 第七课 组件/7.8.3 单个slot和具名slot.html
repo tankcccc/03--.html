@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+    <style>
+        #app{
+            border: 2px solid black; width: 600px;height: 300px;font-weight: 700;
+            font-size: 16px;padding: 3px; margin: 0 auto;margin-top: 100px;
+        }
+    </style>
+<body>
+    <div id="app">
+        <my-component >
+            
+        </my-component>
+        <name-component>
+                <h3 slot="header">我是标题</h3>
+                <p>我是正文内容</p>
+                <p>正文内容有两段</p>
+                <p slot="footer">我是底部信息</p>
+        </name-component>
+    </div>
+   
+    <script src="../js/vue.js"></script>
+    <script>
+        Vue.component('my-component',{
+            template:'<div><slot>如果父组件没有插入内容，我就作为默认出现</slot></div>',
+
+        })
+        Vue.component('name-component',{
+            template:' <div class="header">\
+        <solt name="header">\
+        </solt>\
+    </div>',
+
+        })
+        var app = new Vue({
+            el:'#app',
+            data:{
+                
+            }
+        })
+    </script>
+</body>
+</html>
