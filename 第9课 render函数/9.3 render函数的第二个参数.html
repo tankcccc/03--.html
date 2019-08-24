@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<div id="app">
+    <child></child>
+</div>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        Vue.component('child',{
+            render:function(creteElement){
+                return creteElement({
+                    template:'<div>我是龙的传人</div>'
+                },{
+                    'class':{
+                        foo:"true",
+                        baz:false
+                    },
+                    style:{
+                        color:'red',
+                        fontSize:'16px'
+                    },
+                    attrs:{
+                        id:'foo',
+                        src:'http://baidu.com'
+                    },
+                    domProps:{
+                        innerHTML:'<span style="color:blue;font-size: 18px">我是蓝色</span>'
+                    }
+                })
+            }
+        })
+        var app = new Vue({
+            el:'#app',
+            data:{
+                
+            }
+        })
+    </script>
+</body>
+</html>
